@@ -51,7 +51,7 @@ const LoginPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
       <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-center">
         {/* Left Side - Branding & Info */}
-        <div className="hidden lg:flex flex-col justify-center space-y-8 p-12">
+        <div className="hidden select-none lg:flex flex-col justify-center space-y-8 p-12">
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
@@ -346,7 +346,7 @@ const LoginPage = () => {
                   <span className="text-sm text-gray-600">Remember me</span>
                 </label>
                 <NavLink
-                  to={"forgot-password"}
+                  to={"../forgot-password"}
                   className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                 >Forgot password?</NavLink>
               </div>

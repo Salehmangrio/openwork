@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const OTPVerify = () => {
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -51,13 +51,15 @@ const OTPVerify = () => {
 
       {/* PLATFORM NAME ON TOP */}
       <div className="absolute top-8 text-center">
+        <NavLink to="/login">
         <h1 className="text-4xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text drop-shadow-md">
           OpenWork
         </h1>
+        </NavLink>
       </div>
 
       {/* CARD */}
-      <div className="bg-white shadow-xl shadow-gray-400 rounded-2xl p-10 w-full max-w-md mt-20">
+      <div className="bg-white  rounded-2xl p-10 w-full max-w-md mt-20 shadow-[0_4px_6px_rgba(0,0,0,0.1)]">
 
         {/* Header */}
         <h1 className="text-3xl font-bold text-indigo-700 text-center">

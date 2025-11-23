@@ -6,7 +6,8 @@ import {
   selectFreelancersList as selectAllFreelancers,
   selectJobs as selectAllJobs,
   selectOrders as selectAllOrders,
-  selectPayments as selectAllPayments
+  selectPayments as selectAllPayments,
+  selectTotalEarningsByFreelancerId
 } from "../../store/slices/slices.js";
 
 const FreelanceDashboard = () => {
@@ -32,9 +33,9 @@ const FreelanceDashboard = () => {
   );
 
   // Calculate earnings
-  const totalEarnings = payments
-    .filter(p => p.freelancer_id === freelancer.freelancer_id)
-    .reduce((sum, p) => sum + p.amount, 0);
+  const totalEarnings = useSelector(state =>
+    selectTotalEarningsByFreelancerId(state, freelancer.freelancer_id)
+  );
 
   return (
     <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50">

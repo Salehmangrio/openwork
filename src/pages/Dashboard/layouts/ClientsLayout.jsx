@@ -77,7 +77,7 @@ const ClientsLayout = () => {
 
             {/* Desktop Icons */}
             <div className="hidden md:flex items-center space-x-4">
-              <button className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors">
+              <NavLink to={`notification/${parseInt(currentUser?.user_id)}`} className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors">
                 <svg
                   className="w-6 h-6 text-gray-600"
                   fill="none"
@@ -92,7 +92,7 @@ const ClientsLayout = () => {
                   />
                 </svg>
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-              </button>
+              </NavLink>
 
               <NavLink
                 to={"chat"}

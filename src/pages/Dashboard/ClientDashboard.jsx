@@ -8,6 +8,7 @@ import {
   selectJobApplications,
   selectOpenOffers,
   selectOrders,
+  selectTotalSpendByClientId,
   selectFreelancersList
 } from "../../store/slices/slices.js";
 
@@ -43,6 +44,10 @@ const ClientDashboard = () => {
   // Calculate stats
   const activeJobsCount = clientJobs.filter(j => j.status === 'open').length;
   const totalApplications = clientApplications.length;
+
+  const totalSpent = useSelector(state =>
+    selectTotalSpendByClientId(state, currentClient.client_id)
+  );
 
   // Get category breakdown
   const categoryCount = openOffers.reduce((acc, offer) => {
@@ -107,7 +112,7 @@ const ClientDashboard = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Total Spent</p>
-                <p className="text-3xl font-bold text-gray-900">${currentClient.total_spent}</p>
+                <p className="text-3xl font-bold text-gray-900">${totalSpent}</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

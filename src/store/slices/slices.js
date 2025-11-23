@@ -1,5 +1,6 @@
 // slices.js
 import { createSlice } from '@reduxjs/toolkit';
+import {supabase} from '../../db/suppabase.js';
 
 // =====================================================
 // 1. USERS
@@ -30,6 +31,7 @@ export const usersSlice = createSlice({
             { user_id: 15, email: 'umar.farooq@yahoo.com', name: 'Umar Farooq', password_hash: 'hash123', role: 'freelancer', phone: '333-444-5556', profile_image: '/img/umar.png', created_at: '2024-05-10', completed_orders: 11, suspended_status: false },
             { user_id: 17, email: 'imran.siddiqui@outlook.com', name: 'Imran Siddiqui', password_hash: 'hash345', role: 'freelancer', phone: '555-666-7778', profile_image: '/img/imran.png', created_at: '2024-05-20', completed_orders: 16, suspended_status: false },
             { user_id: 19, email: 'abdullah.yousuf@gmail.com', name: 'Abdullah Yousuf', password_hash: 'hash567', role: 'freelancer', phone: '777-888-9990', profile_image: '/img/abdullah.png', created_at: '2024-06-01', completed_orders: 13, suspended_status: false }
+            //Admins 
         ]
 
     },
@@ -681,6 +683,17 @@ export const selectOrders = state => state.orders.list;
 export const selectOrderById = (state, orderId) => state.orders.list.find(o => o.order_id === orderId) || null;
 export const selectOrdersByClientId = (state, clientId) => state.orders.list.filter(o => o.client_id === clientId);
 export const selectOrdersByFreelancerId = (state, freelancerId) => state.orders.list.filter(o => o.freelancer_id === freelancerId);
+export const selectTotalEarningsByFreelancerId = (state, freelancerId) => {
+    return state.orders.list
+        .filter(o => o.freelancer_id === freelancerId && o.status === 'completed')
+        .reduce((total, o) => total + o.total_amount, 0);
+};
+export const selectTotalSpendByClientId = (state, clientId) => {
+    return state.orders.list
+        .filter(o => o.client_id === clientId && o.status === 'completed')
+        .reduce((total, o) => total + o.total_amount, 0);
+}
+
 
 export const selectPayments = state => state.payments.list;
 export const selectPaymentsByOrderId = (state, orderId) => state.payments.list.filter(p => p.order_id === orderId);
