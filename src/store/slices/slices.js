@@ -1,6 +1,6 @@
 // slices.js
 import { createSlice } from '@reduxjs/toolkit';
-import {supabase} from '../../db/suppabase.js';
+import { supabase } from '../../db/suppabase.js';
 
 // =====================================================
 // 1. USERS
